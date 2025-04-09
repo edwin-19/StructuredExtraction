@@ -1,0 +1,12 @@
+llama-index
+llama-index-core
+transformers
+llama-index-embeddings-instructor
+llama-index-embeddings-huggingface
+llama-index-llms-huggingface
+llama-index-llms-openai
+markdown
+markitdown[all]
+datamodel-code-generator
+typer
+async-typer
