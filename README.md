@@ -20,7 +20,40 @@ class PersonalDetails(BaseModel):
     first_name: Optional[str] = Field(default="", description="First Name. E.g: Smith")
 ```
 
-- Therefore when the output model you can have a json following what you defined
+- Therefore when the output model you can have a json following what you defined, as defined below:
+```json
+{
+    "personal_details": {
+        "title": "",
+        "salutation": "",
+        "first_name": "test",
+        "last_name": "test 2",
+        "maiden_name": "",
+        "middle_name": "",
+        "gender": "Male",
+        "is_will_up_to_date": true,
+        "ni_number": "NP341350A",
+        "date_of_birth": "1967-12-13",
+        "email": "",
+        "nationality": "British",
+        "marital_status": "Living with partner",
+        "is_power_of_attorney_granted": false,
+        "place_of_birth": "London",
+        "country_of_birth": "United Kingdom",
+        "marital_status_since": ""
+    },
+    "address": {
+        "address1": "",
+        "address2": "",
+        "address3": "",
+        "address4": "",
+        "city": "London",
+        "county": "",
+        "country": "GB",
+        "postcode": "AB12 3CD"
+    }
+}
+```
 
 # Install
 - Lets first start by installing dependecies

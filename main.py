@@ -4,13 +4,15 @@ from models.client_details import ClientDetails
 from markitdown import MarkItDown
 from pathlib import Path
 from pprint import pprint
+from utils.utils import write_json
 
 app = AsyncTyper()
 md = MarkItDown()
 
 @app.async_command()
 async def extract(
-    data_path:Path=typer.Option("data")
+    data_path:Path=typer.Option("data"),
+    save_data:bool=typer.Option(True)
 ):
     # Init workflow 
     from workflow.extract import ExtractWorkFlow
@@ -28,9 +30,11 @@ async def extract(
         schema=ClientDetails, text=data, query=query
     )
     pprint(results.model_dump())
+    if save_data:
+        write_json('output.json', results.model_dump())
 
 @app.async_command()
-async def extract_rag(data_path:Path=typer.Option("data")):
+async def extract_rag(data_path:Path=typer.Option("data"), save_data:bool=typer.Option(True)):
     # Init workflow 
     from workflow.extract import ExtractRAGWorkflow
     workflow = ExtractRAGWorkflow(timeout=400)
@@ -47,6 +51,8 @@ async def extract_rag(data_path:Path=typer.Option("data")):
         schema=ClientDetails, text=data, query=query
     )
     pprint(results.model_dump())
+    if save_data:
+        write_json('output.json', results.model_dump())
     
 if __name__ == "__main__":
     app()

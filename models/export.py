@@ -1,15 +1,11 @@
 import typer
 from client_details import ClientDetails
-import json
 import os
 import logging
+from utils.utils import write_json
 
 logging.basicConfig(level=logging.INFO)
 app = typer.Typer()
-
-def write_json(json_path, data):
-    with open(json_path, 'w') as jsonf:
-        json.dump(data, jsonf, indent=4)
 
 @app.command()
 def main(outpath:str=typer.Option('./schema')):
